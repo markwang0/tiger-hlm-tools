@@ -57,18 +57,24 @@ def describe_setup_options():
         "partition": "SLURM partition to use.",
         "email": "Email address for SLURM notifications.",
         "runoff_version": "Tiger HLM runoff module version to load.",
+        "runoff_module": "Runoff module name, including the PET formulation.",
         "routing_version": "Tiger HLM routing module version to load.",
         "runoff_time": "SLURM wall time for runoff jobs.",
         "routing_time": "SLURM wall time for routing jobs.",
         "runoff_mem": "Memory request for runoff jobs.",
-        "routing_cpus": "CPU count requested for routing jobs.",
+        "routing_cpus": "Threads on the routing CPU node.",
+        "routing_gpu_cpus": "Threads on the routing GPU node.",
+        "routing_cpu_partition": "SLURM partition for the routing CPU node.",
+        "routing_mem": "Memory request for the routing GPU node.",
+        "partition_file": "Network partition file for GPU rank 0 and CPU rank 1.",
+        "lookahead_chunks": "MPI routing lookahead; the module accepts 0 or 1.",
         "remove_runoff": "Whether to remove runoff files after routing completes.",
     }
 
     defaults = {}
     defaults.update(runoff_yaml_defaults(""))
     defaults.update(routing_yaml_defaults())
-    defaults.update({k: v for k, v in SLURM_DEFAULTS.items() if k in {"account", "partition", "email", "runoff_version", "routing_version", "runoff_time", "routing_time", "runoff_mem", "routing_cpus"}})
+    defaults.update(SLURM_DEFAULTS)
     defaults.update(runoff_slurm_defaults({}))
     defaults.update(routing_slurm_defaults({}))
 

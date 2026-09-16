@@ -3,6 +3,8 @@ time:
   calendar: "julian" # "no_leap" or "julian"
 
 solver:
+  traversal: "counter"
+  prefetch_runoff: 1
   rk4_level: 1
   dt: 1.0
   rtol: 1E-4
@@ -28,6 +30,10 @@ boundary_conditions:
 reservoir:
   flag: 0 # 0 = no reservoirs, 1 use reservoirs
   res_file: '' #list of IDs which have reservoirs
+
+mpi:
+  partition_file: "$partition_file"
+  lookahead_chunks: $lookahead_chunks
 
 runoff:
   folder: $runoff_path # specify path to list of files

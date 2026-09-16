@@ -10,11 +10,15 @@ SLURM_DEFAULTS = {
     "partition":       "my_partition",
     "email":           "user@university.edu",
     "runoff_version":  "1.0.0",
-    "routing_version": "1.0.0",
+    "runoff_module":   "Tiger_HLM_Runoff_OudinPET",
+    "routing_version": "1.1.0",
     "runoff_time":     "24:00:00",
     "routing_time":    "08:00:00",
     "runoff_mem":      "128G",
     "routing_cpus":    112,
+    "routing_gpu_cpus": 12,
+    "routing_cpu_partition": "cpu",
+    "routing_mem":     "500G",
 }
 
 
@@ -78,6 +82,8 @@ def runoff_yaml_defaults(region, solver_overrides=None):
 
 def routing_yaml_defaults():
     return {
+        "partition_file":      REQUIRED,
+        "lookahead_chunks":    1,
         "start_date":          REQUIRED,
         "params":              REQUIRED,
         "runoff_path":         REQUIRED,
@@ -105,6 +111,7 @@ def runoff_slurm_defaults(slurm_cfg):
         "time":              slurm_cfg.get("runoff_time",      SLURM_DEFAULTS["runoff_time"]),
         "email":             slurm_cfg.get("email",            SLURM_DEFAULTS["email"]),
         "runoff_version":    slurm_cfg.get("runoff_version",   SLURM_DEFAULTS["runoff_version"]),
+        "runoff_module":     slurm_cfg.get("runoff_module",    SLURM_DEFAULTS["runoff_module"]),
         "yaml":              REQUIRED,
         "out":               "out.txt",
         "routing_slurm_dir": REQUIRED,
@@ -114,8 +121,12 @@ def runoff_slurm_defaults(slurm_cfg):
 
 def routing_slurm_defaults(slurm_cfg):
     return {
+        "gpu_cpus":         slurm_cfg.get("routing_gpu_cpus", SLURM_DEFAULTS["routing_gpu_cpus"]),
+        "cpu_partition":    slurm_cfg.get("routing_cpu_partition", SLURM_DEFAULTS["routing_cpu_partition"]),
         "name":             "routing",
         "account":          slurm_cfg.get("account",          SLURM_DEFAULTS["account"]),
+        "partition":        slurm_cfg.get("partition",        SLURM_DEFAULTS["partition"]),
+        "mem":              slurm_cfg.get("routing_mem",      SLURM_DEFAULTS["routing_mem"]),
         "cpus":             slurm_cfg.get("routing_cpus",     SLURM_DEFAULTS["routing_cpus"]),
         "time":             slurm_cfg.get("routing_time",     SLURM_DEFAULTS["routing_time"]),
         "email":            slurm_cfg.get("email",            SLURM_DEFAULTS["email"]),

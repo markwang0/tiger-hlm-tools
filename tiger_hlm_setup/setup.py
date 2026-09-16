@@ -144,9 +144,12 @@ def _write_year(
         "out":                f"out_{year}.txt",
         "runoff_path":        f"{runoff_path}/*.nc",
         "remove_runoff_cmd":  remove_cmd,
+        "partition_file":     rt["partition_file"],
+        "wrapper":            f"hetjob_wrapper_{year}.sh",
     })
     _validate(rts, f"routing_slurm year={year}")
     write_file(routing_slurm_f, render_template("routing.slurm", rts))
+    write_file(f"{paths['routing_slurm']}/{rts['wrapper']}", render_template("hetjob_wrapper.sh", rts))
 
     print(f"  [{year}] files written")
 

@@ -16,5 +16,6 @@ setup(
         "scipy",
         "netcdf4",
         "h5netcdf",
+        "ipykernel",
     ],
 )
