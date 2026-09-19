@@ -63,6 +63,7 @@ def describe_setup_options():
         "routing_time": "SLURM wall time for routing jobs.",
         "runoff_mem": "Memory request for runoff jobs.",
         "routing_cpus": "Threads on the routing CPU node.",
+        "routing_gpu_mem": "Memory for the routing GPU node; defaults to routing_mem. GPU rank needs ~300 GB for East, ~450 GB for Central",
         "routing_gpu_cpus": "Threads on the routing GPU node.",
         "routing_cpu_partition": "SLURM partition for the routing CPU node.",
         "routing_mem": "Memory request for the routing GPU node.",

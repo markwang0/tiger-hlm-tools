@@ -127,6 +127,7 @@ def routing_slurm_defaults(slurm_cfg):
         "account":          slurm_cfg.get("account",          SLURM_DEFAULTS["account"]),
         "partition":        slurm_cfg.get("partition",        SLURM_DEFAULTS["partition"]),
         "mem":              slurm_cfg.get("routing_mem",      SLURM_DEFAULTS["routing_mem"]),
+        "gpu_mem":          slurm_cfg.get("routing_gpu_mem",  slurm_cfg.get("routing_mem", SLURM_DEFAULTS["routing_mem"])),
         "cpus":             slurm_cfg.get("routing_cpus",     SLURM_DEFAULTS["routing_cpus"]),
         "time":             slurm_cfg.get("routing_time",     SLURM_DEFAULTS["routing_time"]),
         "email":            slurm_cfg.get("email",            SLURM_DEFAULTS["email"]),

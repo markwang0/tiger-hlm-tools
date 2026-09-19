@@ -12,7 +12,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=$gpu_cpus
 #SBATCH --gres=gpu:1
-#SBATCH --mem=$mem
+#SBATCH --mem=$gpu_mem
 
 #SBATCH hetjob
 
