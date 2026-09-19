@@ -33,7 +33,7 @@ reservoir:
 
 mpi:
   partition_file: "$partition_file"
-  lookahead_chunks: $lookahead_chunks
+  lookahead_chunks: $lookahead_chunks # 0 for one CPU node; 1 overlaps the transfer with the solve, for two or more
 
 runoff:
   folder: $runoff_path # specify path to list of files

@@ -83,7 +83,7 @@ def runoff_yaml_defaults(region, solver_overrides=None):
 def routing_yaml_defaults():
     return {
         "partition_file":      REQUIRED,
-        "lookahead_chunks":    1,
+        "lookahead_chunks":    0,
         "start_date":          REQUIRED,
         "params":              REQUIRED,
         "runoff_path":         REQUIRED,

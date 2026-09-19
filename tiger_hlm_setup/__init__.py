@@ -67,7 +67,7 @@ def describe_setup_options():
         "routing_cpu_partition": "SLURM partition for the routing CPU node.",
         "routing_mem": "Memory request for the routing GPU node.",
         "partition_file": "Network partition file for GPU rank 0 and CPU rank 1.",
-        "lookahead_chunks": "MPI routing lookahead; the module accepts 0 or 1.",
+        "lookahead_chunks": "MPI routing lookahead. 0 for one GPU + one CPU node (default). 1 with two or more CPU nodes: overlaps the transfer with the solve, needs routing_mem 600G.",
         "remove_runoff": "Whether to remove runoff files after routing completes.",
     }
 

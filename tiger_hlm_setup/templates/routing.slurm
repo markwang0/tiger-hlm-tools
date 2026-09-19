@@ -21,6 +21,7 @@
 #SBATCH --ntasks=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=$cpus
+#SBATCH --mem=$mem
 
 set -euo pipefail
 
