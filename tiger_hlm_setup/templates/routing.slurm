@@ -26,6 +26,7 @@
 set -euo pipefail
 
 test -f "$partition_file" || { echo "Missing routing partition: $partition_file" >&2; exit 1; }
+module purge
 srun --mpi=pmi2 --label --het-group=0,1 bash "$wrapper" "$yaml" > "$out" 2>&1
 
 $remove_runoff_cmd
